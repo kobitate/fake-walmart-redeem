@@ -1,0 +1,17 @@
+{
+  "name": "Safe Browsing Buddy for Walmart",
+  "version": "1.0.0",
+  "description": "A companion to Safe Browsing Bro for Walmart.com",
+  "author": "KaiTiggy <hi@kaitiger.tech>",
+  "manifest_version": 2,
+  "permissions": [
+    "https://www.walmart.com",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.walmart.com/account/giftcards*"],
+      "js": ["jquery-3.4.1.min.js", "contentScript.js"]
+    }
+  ]
+}
