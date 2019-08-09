@@ -17,5 +17,5 @@ Additionally, please don't be a jerk with this code.
 1. [Download](https://gitlab.com/KaiTiggy/walmart-redeem/-/archive/master/walmart-redeem-master.zip) or clone this repository
 2. Move the folder to a safe location
 3. Open [chrome://extensions](chrome://extensions) in Google Chrome 
-4. If not already enabled, enable Developer mode in the top left and select *Load unpacked*
+4. If not already enabled, enable Developer mode in the top right and select *Load unpacked*
 4. Navigate to the downloaded repository and open the folder
