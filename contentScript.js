@@ -39,6 +39,12 @@ const makeWalmartGC = (number, balance) => {
   `
 }
 
+const makeWalmartAlert = (options) => `
+  <div class="message active message-${options.type ? options.type : 'success'} message-block ${options.additionalClasses && options.additionalClasses.join(' ')}">
+    <strong>${options.title ? options.title : 'Success!'}</strong>&nbsp;${options.message ? options.message : 'It worked.'}
+  </div>
+`
+
 let extData = {}
 
 const addCardToStorage = (card, callback) => {
@@ -126,6 +132,13 @@ $(document).ready(e => {
               // add it to the screen like a hacker
               $('.gift-card-wrapper-inner ul.Grid').prepend(card)
               $('.submit-save-gift-card').removeAttr('disabled')
+
+              // make and display success message
+              const message = makeWalmartAlert({
+                title: 'Gift Card Successfully Redeemed!',
+                message: `$${cardBalance.toFixed(2)} has been added to your account`
+              })
+              $('.gift-card-wrapper-inner .u-size-9-12-m').first().append(message)
 
               // scroll to the top just for some flair
               $('html, body').animate({ scrollTop: '0px' })
