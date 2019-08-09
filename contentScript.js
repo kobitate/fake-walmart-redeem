@@ -56,10 +56,16 @@ const addCardToStorage = (card, callback) => {
 }
 
 const renderSaved = (cards) => {
+  let totalBalance = 0
   cards.forEach(card => {
     const savedCard = makeWalmartGC(card.number, card.balance)
     $('.gift-card-wrapper-inner ul.Grid').prepend(savedCard)
+    totalBalance += card.balance
   })
+
+  $('.gift-card-wrapper-inner .u-size-9-12-m').first().html(`
+    <strong>Total balance:</strong> <span class='gift-card-total-balance'>$${totalBalance.toFixed(2)}</a>
+  `)
 }
 
 $(document).ready(e => {
@@ -139,6 +145,11 @@ $(document).ready(e => {
                 message: `$${cardBalance.toFixed(2)} has been added to your account`
               })
               $('.gift-card-wrapper-inner .u-size-9-12-m').first().append(message)
+
+              // add to the total balance
+              let totalBalance = parseFloat($('.gift-card-total-balance').text().replace('$', ''))
+              totalBalance += cardBalance
+              $('.gift-card-total-balance').text(`$${totalBalance.toFixed(2)}`)
 
               // scroll to the top just for some flair
               $('html, body').animate({ scrollTop: '0px' })
